@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FSA Monitoring Dashboard with Ollama Chat</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Renewable Energy FSA-Based Monitoring</h1>
+  </header>
+  <main>
+    <section id="dashboard">
+      <h2>Node Status</h2>
+      <table id="node-table">
+        <thead>
+          <tr>
+            <th>Node ID</th>
+            <th>Status</th>
+            <th>Power Output (kW)</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="charts">
+      <h2>Power Output Over Time</h2>
+      <canvas id="powerChart" width="600" height="300"></canvas>
+    </section>
+
+    <section id="ollama-chat">
+      <h2>Ask AI (Ollama Chat)</h2>
+      <div id="chat-log"></div>
+      <input
+        type="text"
+        id="chat-input"
+        placeholder="Ask about node status, faults, etc."
+      />
+      <button id="send-chat">Send</button>
+    </section>
+  </main>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Your frontend scripts -->
+  <script src="scripts/api.js"></script>
+  <script src="scripts/graph.js"></script>
+  <script src="scripts/main.js"></script>
+  <script>
+document.addEventListener("mousemove", (e) => {
+  const star = document.createElement("div");
+  star.className = "star";
+  star.style.left = e.pageX + "px";
+  star.style.top = e.pageY + "px";
+
+  document.body.appendChild(star);
+
+  // Randomize star color for more magic
+  const colors = ["#0ff", "#00f5ff", "#ff00ff", "#ffcc00"];
+  star.style.background = `radial-gradient(circle, ${colors[Math.floor(Math.random() * colors.length)]}, transparent)`;
+
+  // Remove star after animation
+  setTimeout(() => {
+    star.remove();
+  }, 1000);
+});
+</script>
+<script>
+document.addEventListener("mousemove", (e) => {
+  const star = document.createElement("div");
+  star.className = "star";
+  star.style.left = e.pageX + "px";
+  star.style.top = e.pageY + "px";
+
+  // Random neon colors for variety
+  const colors = ["#0ff", "#00f5ff", "#ff00ff", "#ffcc00", "#00ff9d"];
+  star.style.background = `radial-gradient(circle, ${colors[Math.floor(Math.random() * colors.length)]}, transparent)`;
+  star.style.boxShadow = `0 0 8px ${colors[Math.floor(Math.random() * colors.length)]}, 0 0 15px ${colors[Math.floor(Math.random() * colors.length)]}`;
+
+  document.body.appendChild(star);
+
+  setTimeout(() => {
+    star.remove();
+  }, 1000);
+});
+</script>
+
+</body>
+</html>

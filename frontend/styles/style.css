@@ -1,0 +1,197 @@
+/* ===== Global Styles ===== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top, #0f0f1f, #050510);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* ===== Header ===== */
+header {
+  background: linear-gradient(90deg, #0ff 0%, #00f5ff 100%);
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 0 20px #0ff;
+  animation: glowHeader 3s ease-in-out infinite alternate;
+}
+
+@keyframes glowHeader {
+  from { box-shadow: 0 0 10px #0ff, 0 0 30px #0ff; }
+  to { box-shadow: 0 0 20px #00f5ff, 0 0 40px #00f5ff; }
+}
+
+h1, h2 {
+  color: #0ff;
+  text-shadow: 0 0 10px #0ff, 0 0 20px #00f5ff;
+}
+
+/* ===== Main Container ===== */
+main {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* ===== Table Styling ===== */
+#node-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#node-table th,
+#node-table td {
+  padding: 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+#node-table th {
+  background: rgba(0, 255, 255, 0.2);
+  color: #0ff;
+  font-weight: bold;
+}
+
+#node-table tbody tr:nth-child(even) {
+  background: rgba(0, 255, 255, 0.05);
+}
+
+#node-table tbody tr {
+  transition: background 0.4s ease, transform 0.3s ease;
+}
+
+#node-table tbody tr:hover {
+  background: rgba(0, 255, 255, 0.2);
+  transform: scale(1.02);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+/* ===== Ollama Chat ===== */
+#ollama-chat {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+  border-radius: 10px;
+  max-width: 650px;
+  margin: 2rem auto;
+  box-shadow: 0 0 15px #0ff;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 1s ease forwards;
+}
+
+#chat-log {
+  margin-bottom: 0.7rem;
+  min-height: 120px;
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  font-family: monospace;
+  white-space: pre-line;
+  color: #0ff;
+  text-shadow: 0 0 5px #0ff;
+}
+
+/* ===== Chat Message Animation ===== */
+.chat-message {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: chatSlideIn 0.5s ease forwards;
+}
+
+@keyframes chatSlideIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Optional typing effect for AI messages */
+.typing {
+  display: inline-block;
+  border-right: 2px solid #0ff;
+  animation: blinkCursor 0.8s steps(2, start) infinite;
+}
+
+@keyframes blinkCursor {
+  50% { border-color: transparent; }
+}
+
+/* ===== Input and Button ===== */
+#chat-input {
+  width: 70%;
+  padding: 0.4rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #0ff;
+  background: transparent;
+  color: #0ff;
+  outline: none;
+  box-shadow: 0 0 10px #0ff inset;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#chat-input:focus {
+  box-shadow: 0 0 20px #0ff inset;
+  transform: scale(1.02);
+}
+
+#send-chat {
+  padding: 0.5rem 1.2rem;
+  background: #0ff;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #00f5ff;
+  transition: all 0.3s ease;
+}
+
+#send-chat:hover {
+  background: #00f5ff;
+  box-shadow: 0 0 20px #0ff, 0 0 40px #00f5ff;
+  transform: scale(1.05);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ===== Neon Wand Cursor ===== */
+body {
+  cursor: url("data:image/svg+xml;utf8,\
+    <svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='cyan' stroke='cyan' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>\
+    <path d='M15 4l-3 3'></path>\
+    <path d='M18 7l-3 3'></path>\
+    <path d='M21 10l-3 3'></path>\
+    <path d='M3 21l9-9'></path>\
+    <path d='M12 12l9-9'></path>\
+    </svg>"
+  ) 4 4, auto;
+}
+
+/* ===== Magic Wand Falling Star Effect ===== */
+.star {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #0ff, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 8px #0ff, 0 0 15px #00f5ff;
+  animation: fallStar 1s linear forwards;
+  z-index: 9999;
+}
+
+@keyframes fallStar {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(100px) scale(0.2); opacity: 0; }
+}
